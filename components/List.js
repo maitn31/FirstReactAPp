@@ -1,19 +1,34 @@
-import { FlatList } from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import ListItem from './ListItem';
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React, { useContext, useEffect, useState } from 'react';
+import { MediaContext } from '../contexts/MediaContext';
+import { useFetch } from '../hooks/Hook';
 
-const List = ({data}) => {
+
+//const url = 'https://raw.githubusercontent.com/mattpe/wbma/master/docs/assets/test.json';
+
+
+const List = ({}) => {
+  const [media, setMedia] = useContext(MediaContext);
+  const [data, loading] = useFetch("https://raw.githubusercontent.com/mattpe/wbma/master/docs/assets/test.json");
+  setMedia(data);
+
   return (
     <FlatList
-      data={data}
-      renderItem={({item}) => <ListItem singleMedia={item}/>}
+      data={media}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={({item}) => <ListItem singleMedia={item} />}
+      style= {styles.container}
     />
   );
 };
 
-List.propTypes = {
-  data: PropTypes.array,
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 35,
+  },
+});
 
 export default List;
