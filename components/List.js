@@ -2,7 +2,7 @@ import {FlatList, StyleSheet} from 'react-native';
 import ListItem from './ListItem';
 import React, { useContext, useEffect, useState } from 'react';
 import { MediaContext } from '../contexts/MediaContext';
-import { useFetch } from '../hooks/Hook';
+import { getAllMedia } from '../hooks/Hook';
 
 
 //const url = 'https://raw.githubusercontent.com/mattpe/wbma/master/docs/assets/test.json';
@@ -10,7 +10,7 @@ import { useFetch } from '../hooks/Hook';
 
 const List = ({}) => {
   const [media, setMedia] = useContext(MediaContext);
-  const [data, loading] = useFetch("https://raw.githubusercontent.com/mattpe/wbma/master/docs/assets/test.json");
+  const [data, loading] = getAllMedia();
   setMedia(data);
 
   return (
