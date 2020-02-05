@@ -1,24 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import List from "./components/List";
 
-const App = () => {
-  return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default App;
 const mediaArray = [
   {
     'key': '0',
@@ -48,3 +31,23 @@ const mediaArray = [
     'filename': 'http://placekitten.com/2039/1920',
   },
 ];
+
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <List data={mediaArray}/>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 32,
+  },
+});
+
+export default App;
