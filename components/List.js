@@ -8,7 +8,7 @@ import { getAllMedia } from '../hooks/Hook';
 //const url = 'https://raw.githubusercontent.com/mattpe/wbma/master/docs/assets/test.json';
 
 
-const List = ({}) => {
+const List = () => {
   const [media, setMedia] = useContext(MediaContext);
   const [data, loading] = getAllMedia();
   setMedia(data);
@@ -17,8 +17,8 @@ const List = ({}) => {
     <FlatList
       data={media}
       keyExtractor={(item, index) => index.toString()}
-      renderItem={({item}) => <ListItem singleMedia={item} />}
-      style= {styles.container}
+      renderItem={({item}) => <ListItem singleMedia={item}/>}
+      style={styles.container}
     />
   );
 };
