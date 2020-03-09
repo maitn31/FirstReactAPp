@@ -1,80 +1,82 @@
-import { Alert,StyleSheet, Image, Text, TouchableOpacity, View } from 'react-native';
-import React, { Component } from "react";
-import { PropTypes } from 'prop-types';
-import ImageModal from "./ImageModal";
+import React from 'react';
+import {
+  ListItem as BaseListItem,
+  Left,
+  Body,
+  Right,
+  Button,
+  Text,
+  Thumbnail,
+  H3,
+  Icon,
+} from 'native-base';
+import PropTypes from 'prop-types';
+import {mediaURL} from '../constants/urlConst';
+import {fetchDELETE} from '../hooks/APIHooks';
+import {AsyncStorage} from 'react-native';
 
-const mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
 
-class ListItem extends Component {
-  state = {
-    modalVisible: false,
-  };
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
-
-  render() {
-    const singleMedia = this.props.singleMedia;
-    return (
-      <React.Fragment>
-        <TouchableOpacity onPress={() => {
-          this.setModalVisible(true)
-        }} style={styles.container}>
-          <Image
-            source={{uri: mediaUrl + singleMedia.thumbnails.w160}}
-            style={styles.image}
-          />
-          <View style={styles.textBox}>
-            <Text style={styles.title}>{singleMedia.title}</Text>
-            <Text>{singleMedia.description}</Text>
-          </View>
-        </TouchableOpacity>
-        <ImageModal animationType="slide"
-                    transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {
-                      //Alert.alert('Image modal has been closed!');
-                      this.setModalVisible(!this.state.modalVisible);
-                    }}
-                    setModalVisible={() => {
-                      this.setModalVisible(!this.state.modalVisible);
-                    }}
-                    item={singleMedia}/>
-      </React.Fragment>
-    )
-  };
-}
-
-const styles = StyleSheet.create({
-  container: {
-    minHeight: 300,
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'grey',
-    marginBottom: 20,
-  },
-  image: {
-    flex: 1,
-    margin: 15,
-    borderRadius: 10,
-    marginRight: 0,
-    resizeMode: 'contain'
-  },
-  textBox: {
-    flex: 1,
-    margin: 15
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold'
-  }
-});
-
+const ListItem = (props) => {
+  return (
+    <BaseListItem thumbnail>
+      <Left>
+        <Thumbnail
+          square
+          source={{uri: mediaURL + props.singleMedia.thumbnails.w160}}
+        />
+      </Left>
+      <Body>
+        <H3 numberOfLines={1}>{props.singleMedia.title}</H3>
+        <Text numberOfLines={1}>{props.singleMedia.description}</Text>
+      </Body>
+      <Right>
+        <Button full onPress={
+          () => {
+            props.navigation.push('Single', {file: props.singleMedia});
+          }
+        }>
+          <Icon name='eye'/>
+        </Button>
+        {props.mode === 'myfiles' &&
+        <>
+          <Button
+            full
+            warning
+            onPress={
+              () => {
+                props.navigation.push('Modify', {file: props.singleMedia});
+              }
+            }
+          >
+            <Icon name='create'/>
+          </Button>
+          <Button
+            full
+            danger
+            onPress={async () => {
+              const token = await AsyncStorage.getItem('userToken');
+              const del = await fetchDELETE('media', props.singleMedia.file_id,
+                  token);
+              console.log('delete', del);
+              if (del.message) {
+                props.getMedia(props.mode);
+              }
+            }}
+          >
+            <Icon name='trash'/>
+          </Button>
+        </>
+        }
+      </Right>
+    </BaseListItem>
+  );
+};
 
 ListItem.propTypes = {
   singleMedia: PropTypes.object,
+  navigation: PropTypes.object,
+  mode: PropTypes.string,
+  getMedia: PropTypes.func,
 };
 
 export default ListItem;
-
