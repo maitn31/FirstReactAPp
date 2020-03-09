@@ -2,12 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee8027de-bc32-4a37-b852-80f25e74afab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/ImageModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/List.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ListItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/AsyncImage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/FormTextInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/constants/urlConst.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/constants/validationConst.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contexts/MediaContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/APIHooks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/LoginHooks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/UploadHooks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/navigators/Navigator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/validation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/AuthLoading.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Modify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/MyFiles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Single.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Upload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ListItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,7 +49,9 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs.cucumber.cucumber_node_package_dir" value="" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -59,6 +77,9 @@
       <updated>1579004545963</updated>
       <workItem from="1579004549383" duration="2364000" />
       <workItem from="1580875622841" duration="3601000" />
+      <workItem from="1583774203240" duration="473000" />
+      <workItem from="1583774724561" duration="37000" />
+      <workItem from="1583774980109" duration="26000" />
     </task>
     <servers />
   </component>
